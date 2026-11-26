@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block contenu %}
+<h1>Liste des trajets</h1>
+
+{% if trajets|length == 0 %}
+    <p class="alert alert-warning">Aucun étudiant.</p>
+{% else %}
+    <table class="table table-striped">
+        <tr>
+            <th>Id</th>
+            <th>Départ</th>
+            <th>Arrivée</th>
+            <th>Date</th>
+            <th>Heure</th>
+            <th>Nombre de places</th>
+            <th>Conducteur</th>
+        </tr>
+    
+        {% for trajet in trajets %}
+        <tr>
+            <td>{{ trajet.id }}</td>
+            <td>{{ trajet.ville_depart }}</td>
+            <td>{{ trajet.ville_arrivee }}</td>
+            <td>{{ trajet.date_trajet }}</td>
+            <td>{{ trajet.heure_depart }}</td>
+            <td>{{ trajet.nb_places }}</td>
+            <td>{{ trajet.conducteur.nom }} {{ trajet.conducteur.prenom }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endif %}
+{% endblock %}}

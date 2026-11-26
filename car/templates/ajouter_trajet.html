@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+
+{% block contenu %}
+<h1 class="titre-page"><i class="bi bi-signpost-split"></i> Ajouter un trajet</h1>
+<p class="text-muted">Le départ ou l'arrivée doit être le LGT Baimbridge.</p>
+
+<form method="GET" class="formulaire mb-3">
+    <label class="form-label">Ville de départ</label>
+    <select name="depart" size="1" class="form-select mb-2">
+    <option>LGT Baimbridge
+    <option>Basse-Terre 
+    <option>Les Abymes 
+    <option>Anse-Bertrand 
+    <option>Baie-Mahault 
+    <option>Baillif 
+    <option>Bouillante 
+    <option>Capesterre-B-E
+    <option>Deshaies 
+    <option>Le Gosier 
+    <option>Gourbeyre 
+    <option>Goyave 
+    <option>Lamentin 
+    <option>Morne-à-l'eau 
+    <option>Petit-Bourg 
+    <option>Petit-Canal 
+    <option>Pointe-à-Pitre 
+    <option>Pointe-Noire 
+    <option>Port-Louis 
+    <option>St-Claude 
+    <option>St-François 
+    <option>St-Anne 
+    <option>Ste-Rose
+    <option>Trois-Rivières
+    <option>Vieux-Fort
+    <option>Vieux-Habitants
+    <option>Le Moule
+    </select>
+
+    <label class="form-label">Ville d'arrivée</label>
+    <select name="arrivee" size="1" class="form-select mb-2">
+    <option>LGT Baimbridge
+    <option>Basse-Terre 
+    <option>Les Abymes 
+    <option>Anse-Bertrand 
+    <option>Baie-Mahault 
+    <option>Baillif 
+    <option>Bouillante 
+    <option>Capesterre-B-E
+    <option>Deshaies 
+    <option>Le Gosier 
+    <option>Gourbeyre 
+    <option>Goyave 
+    <option>Lamentin 
+    <option>Morne-à-l'eau 
+    <option>Petit-Bourg 
+    <option>Petit-Canal 
+    <option>Pointe-à-Pitre 
+    <option>Pointe-Noire 
+    <option>Port-Louis 
+    <option>St-Claude 
+    <option>St-François 
+    <option>St-Anne 
+    <option>Ste-Rose
+    <option>Trois-Rivières
+    <option>Vieux-Fort
+    <option>Vieux-Habitants
+    <option>Le Moule
+    </select>
+
+    <!-- date, heure et places sur la meme ligne -->
+    <div class="row">
+        <div class="col-md-4">
+            <label class="form-label">Date du Trajet</label>
+            <input type="date" name="date" class="form-control mb-2">
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">Heure du Trajet</label>
+            <input type="time" name="heure" class="form-control mb-2">
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">Nombre de places</label>
+            <input type="text" name="nb_places" class="form-control mb-2">
+        </div>
+    </div>
+
+    {% if etudiants|length == 0 %}
+        <p class="alert alert-warning">Veuillez ajouter un étudiant.</p>
+    {% else %}
+        <label class="form-label">Sélectionnez un conducteur :</label>
+
+        <select name="id_conducteur" size="1" class="form-select mb-2">
+        {% for etudiant in etudiants %}
+            <option>ID:{{ etudiant.id }} | {{ etudiant.nom }} - {{ etudiant.prenom }}
+        {% endfor %}
+        </select>
+    {% endif %}
+
+    <input type="submit" value="Enregistrer" class="btn btn-jaune mt-3">
+</form>
+
+<!-- message en vert si ca a marche, en rouge si il y a une erreur -->
+{% if message %}
+    {% if "enregistré" in message %}
+        <p class="alert alert-success"><i class="bi bi-check-circle"></i> {{ message }}</p>
+    {% else %}
+        <p class="alert alert-danger"><i class="bi bi-exclamation-triangle"></i> {{ message }}</p>
+    {% endif %}
+{% endif %}
+{% endblock %}

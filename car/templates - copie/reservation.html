@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block contenu %}
+<h1>Liste des réservations</h1>
+
+{% if reservations|length == 0 %}
+    <p class="alert alert-warning">Aucun étudiant.</p>
+{% else %}
+    <table class="table table-striped">
+        <tr>
+            <th>Id</th>
+            <th>Conducteur</th>
+            <th>Trajet</th>
+            <th>Date de réservation</th>
+        </tr>
+    
+        {% for reservation in reservations %}
+        <tr>
+            <td>{{ reservation.id }}</td>
+            <td>{{ reservation.trajet.conducteur.nom }} {{ reservation.trajet.conducteur.prenom }}</td>
+            <td>{{ reservation.trajet.ville_depart }} -
+                {{ reservation.trajet.ville_arrivee }}</td>
+            <td>{{ reservation.date_reservation }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endif %}
+{% endblock %}}

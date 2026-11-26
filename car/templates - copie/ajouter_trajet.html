@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+
+{% block contenu %}
+<h1>Ajouter un trajet</h1>
+
+<form method="GET" class="card p-3 mb-3">
+    <label>Ville de départ</label>
+    <select name="depart" size="1">
+    <option>LGT Baimbridge
+    <option>Basse-Terre 
+    <option>Les Abymes 
+    <option>Anse-Bertrand 
+    <option>Baie-Mahault 
+    <option>Baillif 
+    <option>Bouillante 
+    <option>Capesterre-B-E
+    <option>Deshaies 
+    <option>Le Gosier 
+    <option>Gourbeyre 
+    <option>Goyave 
+    <option>Lamentin 
+    <option>Morne-à-l'eau 
+    <option>Petit-Bourg 
+    <option>Petit-Canal 
+    <option>Pointe-à-Pitre 
+    <option>Pointe-Noire 
+    <option>Port-Louis 
+    <option>St-Claude 
+    <option>St-François 
+    <option>St-Anne 
+    <option>Ste-Rose
+    <option>Trois-Rivières
+    <option>Vieux-Fort
+    <option>Vieux-Habitants
+    <option>Le Moule
+    </select>
+
+    <label>Ville d'arrivée</label>
+    <select name="arrivee" size="1">
+    <option>LGT Baimbridge
+    <option>Basse-Terre 
+    <option>Les Abymes 
+    <option>Anse-Bertrand 
+    <option>Baie-Mahault 
+    <option>Baillif 
+    <option>Bouillante 
+    <option>Capesterre-B-E
+    <option>Deshaies 
+    <option>Le Gosier 
+    <option>Gourbeyre 
+    <option>Goyave 
+    <option>Lamentin 
+    <option>Morne-à-l'eau 
+    <option>Petit-Bourg 
+    <option>Petit-Canal 
+    <option>Pointe-à-Pitre 
+    <option>Pointe-Noire 
+    <option>Port-Louis 
+    <option>St-Claude 
+    <option>St-François 
+    <option>St-Anne 
+    <option>Ste-Rose
+    <option>Trois-Rivières
+    <option>Vieux-Fort
+    <option>Vieux-Habitants
+    <option>Le Moule
+    </select>
+
+    <label>Date du Trajet</label>
+    <input type="date" name="date" class="form-control mb-2">
+
+    <label>Heure du Trajet</label>
+    <input type="time" name="heure" class="form-control mb-2">
+
+    <label>Nombre de places</label>
+    <input type="text" name="nb_places" class="form-control mb-2">
+
+    {% if etudiants|length == 0 %}
+        <label>Veuillez ajouter un étudiant.</label>
+    {% else %}
+        <label>Sélectionnez un conducteur:</label>
+
+        <select name="id_conducteur" size="1">
+        {% for etudiant in etudiants %}
+            <option>ID:{{ etudiant.id }} | {{ etudiant.nom }} - {{ etudiant.prenom }}
+        {% endfor %}
+        </select>
+    {% endif %}
+    
+</br>
+
+    <input type="submit" value="Enregistrer" class="btn btn-primary">
+</form>
+
+{% if message %}
+<p class="alert alert-success">{{ message }}</p>
+{% endif %}
+{% endblock %}

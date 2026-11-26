@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block contenu %}
+<h1 class="titre-page"><i class="bi bi-person-plus"></i> Créer un compte</h1>
+<p class="text-muted">Seront marqués par * les cases obligatoires.</p>
+
+<form method="GET" class="formulaire mb-3">
+    <!-- nom et prenom sur la meme ligne -->
+    <div class="row">
+        <div class="col-md-6">
+            <label class="form-label">Nom*</label>
+            <input type="text" name="nom" class="form-control mb-2">
+        </div>
+        <div class="col-md-6">
+            <label class="form-label">Prénom*</label>
+            <input type="text" name="prenom" class="form-control mb-2">
+        </div>
+    </div>
+
+    <label class="form-label">Email*</label>
+    <input type="text" name="email" class="form-control mb-2" placeholder="exemple@mail.fr">
+
+    <div class="row">
+        <div class="col-md-6">
+            <label class="form-label">Mot de Passe*</label>
+            <input type="password" name="passwd" class="form-control mb-2">
+        </div>
+        <div class="col-md-6">
+            <label class="form-label">Confirmer le Mot de Passe*</label>
+            <input type="password" name="passwd_bis" class="form-control mb-2">
+        </div>
+    </div>
+
+    <label class="form-label">N° Téléphone*</label>
+    <input type="text" name="telephone" class="form-control mb-3" placeholder="10 chiffres, ex : 0690123456">
+
+    <input type="submit" value="Créer un compte" class="btn btn-jaune">
+</form>
+
+<!-- message en vert si ca a marche, en rouge si il y a une erreur -->
+{% if message %}
+    {% if "ajouté" in message %}
+        <p class="alert alert-success"><i class="bi bi-check-circle"></i> {{ message }}</p>
+    {% else %}
+        <p class="alert alert-danger"><i class="bi bi-exclamation-triangle"></i> {{ message }}</p>
+    {% endif %}
+{% endif %}
+{% endblock %}

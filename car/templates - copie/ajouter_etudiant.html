@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block contenu %}
+<h1>Créer un compte</h1>
+<h3>Seront marqués par * les cases obligatoires.</h3>
+
+<form method="GET" class="card p-3 mb-3">
+    <label>Nom*</label>
+    <input type="text" name="nom" class="form-control mb-2">
+
+    <label>Prénom*</label>
+    <input type="text" name="prenom" class="form-control mb-2">
+
+    <label>Email*</label>
+    <input type="text" name="email" class="form-control mb-2">
+
+    <label>Mot de Passe*</label>
+    <input type="password" name="passwd" class="form-control mb-2">
+
+    <label>Confirmer le Mot de Passe*</label>
+    <input type="password" name="passwd_bis" class="form-control mb-2">
+
+    <label>N° Téléphone</label>
+    <input type="text" name="telephone" class="form-control mb-2">
+
+    <input type="submit" value="Créer un compte" class="btn btn-primary">
+</form>
+
+{% if message %}
+<p class="alert alert-success">{{ message }}</p>
+{% endif %}
+{% endblock %}

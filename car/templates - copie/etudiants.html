@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block contenu %}
+<h1>Liste des étudiants</h1>
+
+{% if etudiants|length == 0 %}
+    <p class="alert alert-warning">Aucun étudiant.</p>
+{% else %}
+    <table class="table table-striped">
+        <tr>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>E-mail</th>
+            <th>Téléphone</th>
+        </tr>
+    
+        {% for etudiant in etudiants %}
+        <tr>
+            <td>{{ etudiant.nom }}</td>
+            <td>{{ etudiant.prenom }}</td>
+            <td>{{ etudiant.email }}</td>
+            <td>{{ etudiant.telephone }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endif %}
+{% endblock %}}

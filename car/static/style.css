@@ -1,0 +1,171 @@
+/* ===== Style du site Baimbridge Horizon ===== */
+
+/* les couleurs du site (le jaune c'est celui du batiment du lycee) */
+:root {
+    --jaune: #f2b705;
+    --jaune-fonce: #d9a404;
+    --bleu-nuit: #1e2a38;
+    --gris-clair: #f4f6f8;
+}
+
+body {
+    background-color: var(--gris-clair);
+    font-family: "Poppins", sans-serif;
+}
+
+h1, h2 {
+    color: var(--bleu-nuit);
+    font-weight: bold;
+}
+
+/* petit trait jaune a gauche des titres */
+.titre-page {
+    border-left: 6px solid var(--jaune);
+    padding-left: 12px;
+    margin-bottom: 20px;
+}
+
+
+/* ----- menu en haut ----- */
+.barre-menu {
+    background-color: var(--bleu-nuit);
+    border-bottom: 4px solid var(--jaune);
+    border-radius: 10px;
+}
+
+.barre-menu .navbar-brand {
+    color: var(--jaune);
+    font-weight: bold;
+}
+
+.barre-menu .nav-link {
+    color: white;
+}
+
+.barre-menu .nav-link:hover {
+    color: var(--jaune);
+}
+
+
+/* ----- boutons ----- */
+.btn-jaune {
+    background-color: var(--jaune);
+    color: var(--bleu-nuit);
+    font-weight: bold;
+    border: none;
+}
+
+.btn-jaune:hover {
+    background-color: var(--jaune-fonce);
+    color: var(--bleu-nuit);
+}
+
+
+/* ----- page d'accueil ----- */
+
+/* grande image du lycee */
+.banniere {
+    background-color: var(--bleu-nuit); /* si la photo charge pas */
+    background-image: url("images/lycee-baimbridge.jpg");
+    background-size: cover;
+    background-position: center;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+/* voile sombre par dessus la photo pour bien lire le texte */
+.banniere .voile {
+    background-color: rgba(30, 42, 56, 0.5);
+    color: white;
+    min-height: 420px;
+    padding: 60px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.banniere .voile p {
+    max-width: 600px;
+}
+
+/* les petites cartes */
+.carte {
+    background-color: white;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    padding: 25px;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.2s;
+}
+
+/* la carte monte un peu quand on passe la souris dessus */
+.carte:hover {
+    transform: translateY(-5px);
+}
+
+/* rond jaune avec une icone dedans */
+.icone-ronde {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 15px auto;
+    border-radius: 50%;
+    background-color: var(--jaune);
+    color: var(--bleu-nuit);
+    font-size: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* ----- formulaires ----- */
+.formulaire {
+    background-color: white;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    padding: 25px;
+}
+
+.formulaire label {
+    font-weight: 600;
+    margin-top: 8px;
+}
+
+/* bordure jaune quand on clique dans un champ */
+.form-control:focus, .form-select:focus {
+    border-color: var(--jaune);
+    box-shadow: 0 0 0 0.2rem rgba(242, 183, 5, 0.3);
+}
+
+/* page de connexion : le formulaire est au milieu */
+.boite-connexion {
+    max-width: 450px;
+    margin: 40px auto;
+}
+
+
+/* ----- tableaux ----- */
+.tableau {
+    background-color: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.tableau thead th {
+    background-color: var(--bleu-nuit);
+    color: white;
+}
+
+
+/* ----- bas de page ----- */
+.pied-de-page {
+    text-align: center;
+    color: #6c757d;
+    font-size: 14px;
+    padding: 25px 0;
+    margin-top: 40px;
+}

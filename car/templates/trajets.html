@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block contenu %}
+<h1 class="titre-page"><i class="bi bi-signpost-split"></i> Liste des trajets</h1>
+
+{% if trajets|length == 0 %}
+    <p class="alert alert-warning">Aucun trajet.</p>
+{% else %}
+    <p class="text-muted">{{ trajets|length }} trajet(s) proposé(s)</p>
+
+    <div class="tableau">
+    <table class="table table-striped table-hover mb-0">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Départ</th>
+            <th>Arrivée</th>
+            <th>Date</th>
+            <th>Heure</th>
+            <th>Nombre de places</th>
+            <th>Conducteur</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        {% for trajet in trajets %}
+        <tr>
+            <td>{{ trajet.id }}</td>
+            <td>{{ trajet.ville_depart }}</td>
+            <td>{{ trajet.ville_arrivee }}</td>
+            <td>{{ trajet.date_trajet }}</td>
+            <td>{{ trajet.heure_depart }}</td>
+            <!-- badge jaune pour le nombre de places -->
+            <td><span class="badge text-bg-warning">{{ trajet.nb_places }} places</span></td>
+            <td>{{ trajet.conducteur.nom }} {{ trajet.conducteur.prenom }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </div>
+{% endif %}
+{% endblock %}

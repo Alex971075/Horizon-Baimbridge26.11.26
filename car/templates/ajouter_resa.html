@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block contenu %}
+<h1 class="titre-page"><i class="bi bi-bookmark-check"></i> Ajouter une réservation</h1>
+<p class="text-muted">Seuls les trajets à venir sont affichés.</p>
+
+<form method="GET" class="formulaire mb-3">
+    <label class="form-label">Date de la réservation</label>
+    <input type="date" name="date_reservation" class="form-control mb-2">
+
+    {% if trajets|length == 0 %}
+        <p class="alert alert-warning">Veuillez ajouter un trajet.</p>
+
+    {% else %}
+        <label class="form-label">Sélectionnez un trajet :</label>
+        <select name="id_trajet" size="1" class="form-select mb-2">
+        <!-- ici le conducteur c'est juste son id, pas l'objet etudiant -->
+        {% for trajet in trajets %}
+            <option>ID:{{ trajet.id }} | {{ trajet.ville_depart }} - {{ trajet.ville_arrivee }} | {{ trajet.date_trajet }} {{ trajet.heure_depart }} | Conducteur n°{{ trajet.conducteur }}
+        {% endfor %}
+        </select>
+    {% endif %}
+
+    <input type="submit" value="Ajouter" class="btn btn-jaune mt-3">
+</form>
+
+<!-- message en vert si ca a marche, en rouge si il y a une erreur -->
+{% if message %}
+    {% if "ajoutée" in message %}
+        <p class="alert alert-success"><i class="bi bi-check-circle"></i> {{ message }}</p>
+    {% else %}
+        <p class="alert alert-danger"><i class="bi bi-exclamation-triangle"></i> {{ message }}</p>
+    {% endif %}
+{% endif %}
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block contenu %}
+<h1>Ajouter une réservation</h1>
+
+<form method="GET" class="card p-3 mb-3">
+    <label>Date de la réservation</label>
+    <input type="date" name="date_reservation" class="form-control mb-2">
+
+    {% if trajets|length == 0 %}
+        <label>Veuillez ajouter un trajet</label>
+  
+    {% else %}
+        <label>Sélectionnez un trajet:</label>
+        <select name="id_trajet" size="1">
+        {% for trajet in trajets %}
+            <option>ID:{{ trajet.id }} | {{ trajet.ville_depart }} - {{ trajet.ville_arrivee }} | {{ trajet.date_trajet }} {{ trajet.heure_depart }} | {{ trajet.conducteur.nom }} {{ trajet.conducteur.prenom }}
+        {% endfor %}
+        </select>
+    {% endif %}
+
+    </br>
+
+    <input type="submit" value="Ajouter" class="btn btn-primary">
+</form>
+
+{% if message %}
+<p class="alert alert-success">{{ message }}</p>
+{% endif %}
+{% endblock %}

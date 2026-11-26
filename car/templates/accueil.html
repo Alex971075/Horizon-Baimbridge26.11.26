@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block contenu %}
+
+<!-- grande banniere avec la photo du lycee -->
+<div class="banniere mb-5">
+    <div class="voile">
+        <!-- on affiche le nom seulement si on est connecte -->
+        {% if session["account"] %}
+            <h1 class="text-white">Bienvenue, {{ session["account"]["nom"] }} {{ session["account"]["prenom"] }} !</h1>
+        {% else %}
+            <h1 class="text-white">Bienvenue sur Baimbridge Horizon</h1>
+        {% endif %}
+
+        <p class="lead">L'application de covoiturage pour les élèves et le personnel du lycée de Baimbridge.
+            On partage la route, les frais et la bonne humeur.</p>
+
+        <!-- les boutons changent si on est connecte ou pas -->
+        <div class="mt-3">
+            {% if session["account"] %}
+                <a href="/ajouter_trajet" class="btn btn-jaune btn-lg me-2 mb-2"><i class="bi bi-plus-circle"></i> Proposer un trajet</a>
+                <a href="/ajouter_resa" class="btn btn-outline-light btn-lg mb-2"><i class="bi bi-bookmark-check"></i> Réserver une place</a>
+            {% else %}
+                <a href="/" class="btn btn-jaune btn-lg me-2 mb-2"><i class="bi bi-box-arrow-in-right"></i> Se connecter</a>
+                <a href="/ajouter_etudiant" class="btn btn-outline-light btn-lg mb-2"><i class="bi bi-person-plus"></i> Créer un compte</a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<!-- les 3 etapes pour utiliser le site -->
+<h2 class="titre-page">Comment ça marche ?</h2>
+<div class="row g-4 mb-5">
+    <div class="col-md-4">
+        <div class="carte">
+            <div class="icone-ronde"><i class="bi bi-person-plus"></i></div>
+            <h5>1. Je crée mon compte</h5>
+            <p class="text-muted">Avec mon adresse mail et mon numéro de téléphone.</p>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="carte">
+            <div class="icone-ronde"><i class="bi bi-signpost-split"></i></div>
+            <h5>2. Je propose un trajet</h5>
+            <p class="text-muted">Départ ou arrivée au lycée, avec la date, l'heure et les places libres.</p>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="carte">
+            <div class="icone-ronde"><i class="bi bi-bookmark-check"></i></div>
+            <h5>3. Je réserve ma place</h5>
+            <p class="text-muted">Je choisis un trajet dans la liste et c'est réservé.</p>
+        </div>
+    </div>
+</div>
+
+<!-- pourquoi faire du covoiturage -->
+<h2 class="titre-page">Pourquoi le covoiturage ?</h2>
+<div class="row g-4">
+    <div class="col-md-4">
+        <div class="carte">
+            <div class="icone-ronde"><i class="bi bi-piggy-bank"></i></div>
+            <h5>Moins cher</h5>
+            <p class="text-muted">On partage l'essence à plusieurs.</p>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="carte">
+            <div class="icone-ronde"><i class="bi bi-tree"></i></div>
+            <h5>Plus écolo</h5>
+            <p class="text-muted">Moins de voitures sur la route le matin.</p>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="carte">
+            <div class="icone-ronde"><i class="bi bi-people"></i></div>
+            <h5>Plus sympa</h5>
+            <p class="text-muted">On rencontre d'autres élèves du lycée.</p>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
